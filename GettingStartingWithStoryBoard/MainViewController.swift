@@ -15,6 +15,10 @@ class MainViewController: UIViewController {
     var appHeading: String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        let text = UserDefaults.standard.string(forKey: "heading")
+        if let text = text{
+            titleLabel.text = text
+        }
     }
     @IBAction func onClickButton(_ sender: UIButton) {
         let text = sender.titleLabel?.text
@@ -28,6 +32,7 @@ class MainViewController: UIViewController {
     func changeAppHeading() {
         if let text = appHeading{
             titleLabel.text = text
+            UserDefaults.standard.set(text, forKey: "heading")
         }
     }
 }
